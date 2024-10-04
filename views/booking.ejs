@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" />
+
+    <style>
+      body {
+        background: linear-gradient(135deg, #000610 0%, #001b33 100%);
+      }
+      .container1 {
+        background-image: url("<%= ticket.poster %>");
+        background-size: cover;
+        background-position: center;
+        height: 25vh;
+      }    
+      .container2 {
+        background: linear-gradient(135deg, #000610 0%, #001b33 100%);
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-bottom: 5vh;
+      }
+      .container3 {
+        display: flex;
+        flex-direction: column;
+      }
+      .fotoProfil { 
+        margin-left: 12vh;
+        margin-top: 5vh;
+        width: 25vh;
+        height: 35vh;
+      }
+      .judul {
+        color: white;
+        font-size: 30px;
+        font-weight: 600;
+        padding-top: 1vh;
+        margin-left: 12vh;
+      }
+      .genre {
+        color: white;
+        font-size: 22px;
+        font-weight: 500;
+        margin-left: 12vh;
+      }
+      .screen {
+        width: 85%;
+        background-color: #ecf0f1;
+        color: #2c3e50;
+        text-align: center;
+        padding: 7px;
+        margin-left: 6.5vh;
+        margin-bottom: 10vh;
+        font-weight: bold;
+        position: relative;
+        z-index: 1;
+      }
+
+      .screen::after {
+        content: '';
+        position: absolute;
+        top: 10px;
+        left: 0;
+        width: 100%;
+        height: 50px;
+        background: linear-gradient(to bottom, rgba(255, 223, 186, 0.5), rgba(255, 223, 186, 0));
+        border-radius: 0 0 10px 10px;
+        z-index: -1;
+      }
+      .container4 {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 0 10vh;
+      }
+      .kursi {
+        width: 5vh;
+        height: 5vh;
+        border-radius: 8px;
+        margin-left: 1.5vh;
+        margin-bottom: 4vh;
+        background: linear-gradient(135deg, #0056b3 0%, #003366 100%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-size: 15px;
+        font-weight: 500;
+      }
+      .special-margin {
+        margin-left: 10vh;
+      }
+      .kursi label {
+        display: block;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        cursor: pointer;
+        font-size: 17px;
+        font-weight: 500;
+      }
+      .kursi input[type="checkbox"] {
+        display: none;
+      }
+      .kursi input[type="checkbox"]:checked + label {
+        background-color: #FEA923;
+        color: white;
+        border-color: #007bff;
+        border-radius: 8px;
+      }
+      .kursi:hover {
+        background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+      }
+      .tombol {
+        width: 77%;
+        height: 6vh;
+        border-radius: 10px;
+        margin-top: 2vh;
+        margin-left: 11.5vh;
+        margin-bottom: 5vh;
+        font-size: 18px;
+        font-weight: bold;
+        color: white;
+        background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+        border: none;
+        cursor: pointer;
+        transition: background 0.3s ease-in-out;
+      }
+      .tombol:hover {
+        background: linear-gradient(135deg, #0056b3 0%, #003366 100%);
+      }
+      #formulir label {
+        display: block;
+        width: 40%;
+        height: 100%;
+        cursor: pointer;
+        justify-content: left;
+      }
+      .tombol2 {
+        width: 100%;
+        height: 6vh;
+        border-radius: 10px;
+        margin-top: 2vh;
+        margin-bottom: 5vh;
+        font-size: 18px;
+        font-weight: bold;
+        color: white;
+        background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+        border: none;
+        cursor: pointer;
+        transition: background 0.3s ease-in-out;
+      }
+      .tombol2:hover {
+        background: linear-gradient(135deg, #0056b3 0%, #003366 100%);
+      } 
+    </style>
+</head>
+<body>
+
+    <div class="container-fluid container1"></div>
+
+    <div class="container-fluid container2">
+        <div class="container-fluid container3" style="width: 50%;">
+            <img src="<%= ticket.foto %>" class="fotoProfil" alt="The Peaky Blinders"/>
+
+            <p class="judul"><%= ticket.judul %></p>
+            <p class="genre"><%= ticket.genre %> <span class="ms-4"> <%= ticket.tanggal %></span></p>
+            <div style="margin-left: 12vh;">
+                <i class="bi bi-star-fill" style="color: yellow; font-size: 22px"></i>
+                <i class="bi bi-star-fill" style="color: yellow; font-size: 22px; margin-left: 0.5vh"></i>
+                <i class="bi bi-star-fill" style="color: yellow; font-size: 22px; margin-left: 0.5vh"></i>
+                <i class="bi bi-star-fill" style="color: yellow; font-size: 22px; margin-left: 0.5vh"></i>
+            </div>
+            <p class="genre mt-3">Rp. <%= ticket.harga %></p>
+
+
+        </div>
+
+        <div class="container-fluid container3" style="margin-top: 7vh;">
+
+            <div class="screen"></div>
+            
+            <div class="container4">
+            <% for(let [index, seat] of jam.seat.entries()) { %>
+                <div class="kursi <%= seat.includes('7') ? 'special-margin' : '' %>">
+                  <input type="checkbox" id="seat<%= index %>" name="seat" class="seat" value="<%= seat %>" <%= seat.includes('booked') ? 'disabled' : 'required' %> >
+                  <label class="<%= seat.includes('booked') ? 'bg-danger rounded-3' : '' %>" for="seat<%= index %>"><%= seat.includes('booked') ? '' : seat %></label>
+                </div>
+                <% } %>
+            </div>
+                
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h1 class="fs-4 fw-bold ps-3 pt-2" id="exampleModalLabel">DREAM CINEMA</h1>
+                      </div>
+                      <form action="/booking" method="POST" id="formulir"> 
+                      <div class="modal-body ps-4 d-flex justify-content-between">
+
+                        <div>                    
+                          <div class="form-group d-flex align-items-center flex-direction-row">
+                              <label for="foto"></label>
+                              <input name="foto" value="<%= ticket.foto %>" class="text-danger fw-bold form-control border-0 ms-2" hidden>
+                          </div>                    
+                          <div class="form-group d-flex align-items-center flex-direction-row">
+                              <label for="tiketId"></label>
+                              <input name="tiketId" value="<%= ticket._id %>" class="text-danger fw-bold form-control border-0 ms-2" hidden>
+                          </div>
+                          <div class="form-group d-flex align-items-center flex-direction-row">
+                              <label for="judul">Movie:</label>
+                              <input name="judul" value="<%= ticket.judul %>" class="text-danger fw-bold form-control border-0 ms-2" readonly>
+                          </div>
+
+                          <div class="form-group d-flex align-items-center flex-direction-row">
+                              <label for="genre">Genre:</label>
+                              <input name="genre" value="<%= ticket.genre %>" class="text-danger fw-bold form-control border-0 ms-2" readonly>
+                          </div>
+
+                          <div class="form-group d-flex align-items-center flex-direction-row">
+                              <label for="tanggal">Date:</label>
+                              <input name="tanggal" value="<%= tanggal.tanggal %>" class="text-danger fw-bold form-control border-0 ms-2" readonly>
+                          </div>
+
+                          <div class="form-group d-flex align-items-center flex-direction-row">
+                              <label for="hari" class="me-2">Day:</label>
+                              <input name="hari" value="<%= tanggal.hari %>" class="text-danger fw-bold form-control border-0" readonly>
+                          </div>
+
+                          <div class="form-group d-flex align-items-center flex-direction-row">
+                              <label for="jam" class="me-2">Time:</label>
+                              <input name="jam" value="<%= jam.jam %>" class="text-danger fw-bold form-control border-0" readonly>
+                          </div>
+
+                          <div class="form-group d-flex align-items-center flex-direction-row">
+                              <label for="kursi" class="me-2">Seat:</label>
+                              <input name="seat" id="kursi" class="text-danger fw-bold form-control border-0" readonly>
+                          </div>
+
+                          <div class="form-group d-flex align-items-center flex-direction-row">
+                              <label for="studio" class="me-2">Studio:</label>
+                              <input name="studio" id="studio" value="<%= ticket.studio %>" class="text-danger fw-bold form-control border-0" readonly>
+                          </div>
+
+                          <div class="form-group d-flex align-items-center flex-direction-row">
+                              <label for="harga" class="me-2">Price:</label>
+                              <input name="harga" id="harga" value="<%= ticket.harga %>" class="text-danger fw-bold form-control border-0" readonly>
+                          </div>
+
+                          <div class="form-group d-flex align-items-center flex-direction-row">
+                              <label for="jumlah" class="me-2">Amount:</label>
+                              <input name="jumlah" id="jumlah" class="text-danger fw-bold form-control border-0" readonly>
+                          </div>
+
+                          <div class="form-group d-flex align-items-center flex-direction-row">
+                              <label for="total" class="me-2">Total:</label>
+                              <input name="total" id="total" class="text-danger fw-bold form-control border-0" readonly>
+                          </div>
+                        </div>
+                          
+                        <div class="me-2">
+                          <img src="<%= ticket.foto %>" alt="The Peaky Blinders" width="160"/>
+                        </div>
+                        </div>
+                        <div class="modal-footer d-flex justify-content-start">
+                          <p class="modal-text">Are you sure you want to buy this ticket?</p>
+                          <input type="submit" value="Submit" class="tombol2">
+                        </div>
+                      </form>                          
+                      
+                    </div>
+                  </div>
+                </div>
+
+                <button type="button" class="tombol" data-bs-toggle="modal" data-bs-target="#exampleModal">BUY NOW</button>
+        </div>
+    </div>
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function() {
+            let seat = document.querySelectorAll('.seat')
+            let kursi = document.querySelector('#kursi')
+            let harga = document.querySelector('#harga')
+            let jumlah = document.querySelector('#jumlah')
+            let total = document.querySelector('#total')
+            let result = []
+
+            seat.forEach((e) => {
+                e.addEventListener('change', (e) => {
+                    result = Array.from(document.querySelectorAll('.seat:checked')).map(e => e.value)
+                    kursi.value = result.join(',')
+                    jumlah.value = result.length     
+                    total.value = result.length * harga.value    
+                    console.log(harga.value)    
+                })
+            })
+        })
+
+    </script>
+    
+</body>
+</html>

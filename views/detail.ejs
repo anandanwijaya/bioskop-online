@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detail</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" />
+
+    <style>
+      body {
+        background: linear-gradient(135deg, #000610 0%, #001b33 100%);
+      }
+      .container1 {
+        background-image: url("<%= ticket.poster %>");
+        background-size: cover;
+        height: 45vh;
+      }
+      .fotoProfil {
+        background-image: url("<%= ticket.foto %>");
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 25vh;
+        height: 40vh;
+        margin-left: 10vh;
+        position: absolute;
+        margin-top: -10vh;
+      }
+      .judul {
+        color: white;
+        font-size: 45px;
+        font-weight: 600;
+        padding-top: 1vh;
+        margin-left: 38vh;
+      }
+      .genre {
+        color: white;
+        font-size: 25px;
+        font-weight: 500;
+        margin-left: 38vh;
+      }
+      .container6 {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-left: 15vh;
+        margin-right: 15vh;
+        margin-bottom: 15vh;
+      }
+      .kartu {
+        width: 100%;
+        height: 100%;
+        max-width: 16rem;
+        background: linear-gradient(135deg, #001320 0%, #002a40 100%);
+        border: none;
+        margin: 0 auto;
+      }
+      .card-title {
+        color: white;
+        font-size: 18px;
+        font-weight: 600;
+        text-align: center;
+        margin-bottom: 1vh;
+      }
+      .card-text {
+        color: white;
+        font-size: 16px;
+        font-weight: 400;
+        text-align: center;
+        margin-bottom: 2vh;
+      }
+      .container2 {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .containerKarosel {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        margin-top: 20vh;
+        margin-bottom: 5vh;
+      }
+      .karoselButton {
+        width: 40%;
+        height: 9vh;
+        border-radius: 10px;
+        background-color: #002a40;
+        border: none;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+      }
+      .karoselButton:hover {
+        background-color: #003366;
+      }
+      .container3 {
+        display: flex;
+        flex-direction: column;
+      }
+      .text1 {
+        color: white;
+        font-size: 28px;
+        font-weight: 600;
+        margin-bottom: 4vh;
+      }
+      .container4 {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      .container5 {
+        width: 20vh;
+        height: 8vh;
+        border-radius: 10px;
+        margin: 2vh 1vh;
+        background: linear-gradient(135deg, #000610 0%, #001b33 100%);
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      .container5 input[type="radio"] {
+        display: none;
+      }
+      .container5 label {
+        display: block;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        cursor: pointer;
+      }
+      .container5 input[type="radio"]:checked + label {
+        background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+        color: white;
+        border-color: #007bff;
+        border-radius: 10px;
+      }
+      .container5:hover {
+        background: linear-gradient(135deg, #0056b3 0%, #003366 100%);
+        color: white;
+        border-color: #007bff;
+      }
+      .text2 {
+        color: white;
+        font-size: 18px;
+        font-weight: 400;
+        margin-bottom: 5px;
+      }
+      .text3 {
+        color: white;
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 5px;
+      }
+      .text4 {
+        color: white;
+        font-size: 28px;
+        font-weight: 600;
+        margin-top: 4vh;
+        margin-left: 2vh;
+        margin-bottom: 2vh;
+      }
+      .tombol {
+        width: 75%;
+        margin-top: 3vh;
+        margin-bottom: 5vh;
+        padding: 20px 30px;
+        font-size: 18px;
+        font-weight: bold;
+        color: white;
+        background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+        border: none;
+        border-radius: 15px;
+        cursor: pointer;
+        transition: background 0.3s ease-in-out;
+      }
+      .tombol:hover {
+        background: linear-gradient(135deg, #0056b3 0%, #003366 100%);
+      }
+      @media screen and (max-width: 1200px) {
+        .container2 {
+          margin-top: 0vh;          
+        }
+        .container3{
+          margin-top: 0vh;          
+        }
+        .container5 {
+          width: 18vh;
+          height: 8vh;
+        } 
+        .tombol{
+          width: 75%;
+          margin-top: 5vh;
+        }
+      }
+      @media screen and (max-width: 1000px) {
+        .kartu {
+          max-width: 13rem;
+        }
+        .container2 {
+          margin-top: 0vh;          
+        }
+        .container3{
+          margin-top: 0vh;          
+        }
+        .text4 {
+          text-align: center;
+        }
+        .tombol{
+          width: 80%;
+          background-color: red;
+          margin-top: 5vh;
+        }
+      }
+      @media screen and (max-width: 800px) {
+        .kartu {
+          max-width: 11rem;
+        }
+        .container2 {
+          margin-top: 0vh;          
+        }
+        .container3{
+          margin-top: 0vh;          
+        }
+        .tombol{
+          margin-top: 5vh;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    
+    <div class="container-fluid container1"></div>
+
+    <div class="container-fluid">
+      <div class="fotoProfil"></div>
+      <p class="judul"><%= ticket.judul %></p>
+      <p class="genre">
+        <%= ticket.genre %>
+        <i class="bi bi-star-fill" style="color: yellow; font-size: 24px; margin-left: 1vh"></i>
+        <i class="bi bi-star-fill" style="color: yellow; font-size: 24px; margin-left: 1vh"></i>
+        <i class="bi bi-star-fill" style="color: yellow; font-size: 24px; margin-left: 1vh"></i>
+        <i class="bi bi-star-fill" style="color: yellow; font-size: 24px; margin-left: 1vh"></i>
+      </p>
+    </div>
+
+    <div class="containerKarosel">
+      <button class="karoselButton" style="margin-left: 10vh;" type="button" data-bs-target="#carouselExample" data-bs-slide="prev" >
+        <span style="font-size: 22px; font-weight: 600; ">SINOPSIS</span>
+      </button>
+      <button class="karoselButton" style="margin-right: 10vh;" type="button" data-bs-target="#carouselExample" data-bs-slide="next" >
+        <span style="font-size: 22px; font-weight: 600; ">BUY TICKET</span>
+      </button>
+    </div>
+
+    <div id="carouselExample" class="carousel slide">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="container6">
+            <p class="text1 mt-3">SINOPSIS</p>
+            <p class="text-white" style="font-size: 20px">
+              <%= ticket.sinopsis %>
+            </p>
+            <p class="text1" style="margin-top: 5vh">ACTORS</p>
+            <div class="row gy-5">
+
+              <% for(let actors of ticket.actors) { %>
+              <div class="col-lg-2 col-md-4 col-sm-6 col-6">
+                <div class="card border-0 kartu">
+                  <img src="<%= actors.image %>" class="card-img-top" alt="The Peaky Blinders" height="160" />
+                  <div class="card-body">
+                    <h5 class="card-title"><%= actors.name %></h5>
+                    <p class="card-text mb-4"><%= actors.character %></p>
+                  </div>
+                </div>
+              </div>
+              <% } %>
+
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+
+          <form action="/detail/<%= ticket._id%>/next" method="POST" style="margin-bottom: 18vh;">
+            <div class="container-fluid container2">
+              <div class="container3">
+                <p class="text4">DATE</p>
+                <div class="container4">
+                  
+                  <% for (let [index, waktu] of ticket.waktu.entries()) { %>
+                    <div class="container5">
+                      <input type="radio" id="date<%= index %>" name="tanggal" value="<%= waktu.tanggal %>" required/>
+                      <label for="date<%= index %>">
+                        <p class="text2"><%= waktu.tanggal %></p>
+                        <p class="text3"><%= waktu.hari %></p>
+                      </label>
+                    </div>
+                  <% } %>
+                  
+
+                </div>
+              </div>
+              <div class="container3">
+                <p class="text4">TIME</p>
+                <div class="container4">
+
+                  <% for(let [index, jam] of ticket.waktu[0].jam.entries()) { %>
+                  <div class="container5">
+                    <input type="radio" id="time<%= index %>" name="jam" value="<%=jam.jam %>" required/>
+                    <label for="time<%= index %>">
+                      <p class="text3"><%=jam.jam %></p>
+                    </label>
+                  </div>
+                  <% } %>
+
+                </div>
+              </div>
+            </div>
+            <div class="d-flex justify-content-center">
+              <button type="submit" class="tombol">BUY NOW</button>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>
